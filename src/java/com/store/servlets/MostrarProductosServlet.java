@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package com.store.servlets;
 
 import com.store.modelo.Producto;
@@ -20,10 +16,7 @@ import javax.naming.NamingException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-/**
- *
- * @author deyve
- */
+
 @WebServlet(name = "MostrarProductosServlet", urlPatterns = {"/"})
 public class MostrarProductosServlet extends HttpServlet {
 
