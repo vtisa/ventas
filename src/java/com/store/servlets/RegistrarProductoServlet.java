@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package com.store.servlets;
 
 import com.store.modelo.Producto;
@@ -19,10 +16,7 @@ import javax.naming.NamingException; // Para el JNDI
 import java.sql.Connection; // Para la conexión a la base de datos
 import java.sql.SQLException; // Para manejar excepciones de SQL
 
-/**
- *
- * @author deyve
- */
+
 @WebServlet(name = "RegistrarProductoServlet", urlPatterns = {"/RegistrarProductoServlet"})
 public class RegistrarProductoServlet extends HttpServlet {
 
