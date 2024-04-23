@@ -49,7 +49,7 @@ public class ProductoDAO {
                 listaProductos.add(producto);
             }
         } catch (SQLException e) {
-            // Manejo de excepciones
+        
         }
         return listaProductos;
     }
