@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.store.servicios;
 
 import com.store.dao.ProductoDAO;
@@ -9,10 +6,6 @@ import com.store.modelo.Producto;
 import java.sql.Connection;
 import java.util.List;
 
-/**
- *
- * @author deyve
- */
 public class ProductoService {
     private final ProductoDAO productoDAO;
 
