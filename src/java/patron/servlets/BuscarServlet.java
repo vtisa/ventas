@@ -1,8 +1,8 @@
 
-package com.store.servlets;
+package patron.servlets;
 
-import com.store.modelo.Producto;
-import com.store.servicios.ProductoService;
+import patron.modelo.Producto;
+import patron.servicios.ProductoService;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -17,18 +17,9 @@ import javax.naming.NamingException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@WebServlet(name = "BuscarProductoServlet", urlPatterns = {"/BuscarProductoServlet"})
-public class BuscarProductoServlet extends HttpServlet {
+@WebServlet(name = "BuscarServlet", urlPatterns = {"/BuscarServlet"})
+public class BuscarServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     
     private DataSource dataSource;
 
@@ -48,29 +39,14 @@ public class BuscarProductoServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+ 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+ 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -83,10 +59,10 @@ public class BuscarProductoServlet extends HttpServlet {
             List<Producto> productos = productoService.buscarProductosPorNombre(nombre);
             
             // Puedes almacenar la lista de productos encontrados en el alcance de solicitud
-            request.setAttribute("productosEncontrados", productos);
+            request.setAttribute("encontrarproduc", productos);
             
             // Redirigir a la página JSP que muestra los productos encontrados
-            request.getRequestDispatcher("productosEncontrados.jsp").forward(request, response);
+            request.getRequestDispatcher("encontrarproduc.jsp").forward(request, response);
         } catch (SQLException e) {
             // Manejar errores de base de datos
             e.printStackTrace(); // Puedes manejar esto mejor en tu aplicación
@@ -94,11 +70,7 @@ public class BuscarProductoServlet extends HttpServlet {
         
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+  
     @Override
     public String getServletInfo() {
         return "Short description";

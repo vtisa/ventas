@@ -1,4 +1,4 @@
-package com.store.modelo;
+package patron.modelo;
 
 public class Producto {
     private int codigo;
@@ -7,7 +7,7 @@ public class Producto {
     private int stock;
 
     public Producto() {
-        // Constructor por defecto
+
     }
 
     public Producto(int codigo, String nombre, double precio, int stock) {
@@ -17,8 +17,6 @@ public class Producto {
         this.stock = stock;
     }
 
-
-    // Métodos getters y setters
 
     public int getCodigo() {
         return codigo;

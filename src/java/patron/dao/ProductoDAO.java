@@ -1,5 +1,5 @@
 
-package com.store.dao;
+package patron.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,19 +7,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.store.modelo.Producto;
+import patron.modelo.Producto;
 
 
 public class ProductoDAO {
     private Connection conexion;
 
-    // Constructor que recibe la conexión a la base de datos
     public ProductoDAO(Connection conexion) {
         this.conexion = conexion;
     }
 
-
-    // Método para insertar un producto en la base de datos
     public void insertarProducto(Producto producto) {
         String sql = "INSERT INTO producto (codigo, nombre, precio, stock) VALUES (?, ?, ?, ?)";
         try (PreparedStatement statement = conexion.prepareStatement(sql)) {

@@ -5,9 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <title>Lista de Productos</title>
-    <!-- Agrega la referencia a Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
@@ -101,14 +100,12 @@
 
             <div class="row justify-content-end">
                 <div class="col-md-12 text-end">
-                    <a href="registro.jsp" class="btn btn-primary btn-lg">Agregar</a>
-                    <a href="buscarProducto.jsp" class="btn btn-primary btn-lg">Buscar producto</a>
+                    <a href="registrar.jsp" class="btn btn-primary btn-lg">Agregar</a>
+                    <a href="buscarproduc.jsp" class="btn btn-primary btn-lg">Buscar producto</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
 </body>
 </html>

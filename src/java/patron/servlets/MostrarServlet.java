@@ -1,7 +1,7 @@
-package com.store.servlets;
+package patron.servlets;
 
-import com.store.modelo.Producto;
-import com.store.servicios.ProductoService;
+import patron.modelo.Producto;
+import patron.servicios.ProductoService;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -17,19 +17,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 
-@WebServlet(name = "MostrarProductosServlet", urlPatterns = {"/"})
-public class MostrarProductosServlet extends HttpServlet {
+@WebServlet(name = "MostrarServlet", urlPatterns = {"/"})
+public class MostrarServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
     private DataSource dataSource;
 
     @Override
@@ -48,15 +38,7 @@ public class MostrarProductosServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -92,14 +74,10 @@ public class MostrarProductosServlet extends HttpServlet {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+ 
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

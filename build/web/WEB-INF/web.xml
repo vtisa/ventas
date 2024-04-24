@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0">
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
     <servlet>
-        <servlet-name>MostrarProductosServlet</servlet-name>
-        <servlet-class>com.store.servlets.MostrarProductosServlet</servlet-class>
+        <servlet-name>MostrarServlet</servlet-name>
+        <servlet-class>patron.servlets.MostrarServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>MostrarProductosServlet</servlet-name>
-        <url-pattern>/MostrarProductosServlet</url-pattern>
+        <servlet-name>MostrarServlet</servlet-name>
+        <url-pattern>/MostrarServlet</url-pattern>
     </servlet-mapping>
-
     <welcome-file-list>
-        <welcome-file>MostrarProductosServlet</welcome-file>
+        <welcome-file>MostrarServlet</welcome-file>
     </welcome-file-list>
 </web-app>

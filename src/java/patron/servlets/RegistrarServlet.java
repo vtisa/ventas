@@ -1,36 +1,26 @@
 
-package com.store.servlets;
+package patron.servlets;
 
-import com.store.modelo.Producto;
-import com.store.servicios.ProductoService;
+import patron.modelo.Producto;
+import patron.servicios.ProductoService;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource; // Para el DataSource
-import javax.naming.Context; // Para el JNDI
-import javax.naming.InitialContext; // Para el JNDI
-import javax.naming.NamingException; // Para el JNDI
-import java.sql.Connection; // Para la conexión a la base de datos
-import java.sql.SQLException; // Para manejar excepciones de SQL
+import javax.sql.DataSource;
+import javax.naming.Context; 
+import javax.naming.InitialContext; 
+import javax.naming.NamingException; 
+import java.sql.Connection; 
+import java.sql.SQLException;
 
 
-@WebServlet(name = "RegistrarProductoServlet", urlPatterns = {"/RegistrarProductoServlet"})
-public class RegistrarProductoServlet extends HttpServlet {
+@WebServlet(name = "RegistrarServlet", urlPatterns = {"/RegistrarServlet"})
+public class RegistrarServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
-    private DataSource dataSource; // Declarar el DataSource
+    private DataSource dataSource; 
 
     @Override
     public void init() throws ServletException {
@@ -105,7 +95,7 @@ public class RegistrarProductoServlet extends HttpServlet {
         }
 
         // Redirigir a una página de éxito o mostrar un mensaje
-        response.sendRedirect("MostrarProductosServlet");
+        response.sendRedirect("MostrarServlet");
         
     }
 

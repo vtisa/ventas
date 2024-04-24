@@ -1,8 +1,7 @@
+package patron.servicios;
 
-package com.store.servicios;
-
-import com.store.dao.ProductoDAO;
-import com.store.modelo.Producto;
+import patron.dao.ProductoDAO;
+import patron.modelo.Producto;
 import java.sql.Connection;
 import java.util.List;
 
@@ -13,9 +12,7 @@ public class ProductoService {
         productoDAO = new ProductoDAO(conexion);
     }
 
-    // Método para agregar un producto a la base de datos
     public void agregarProducto(Producto producto) {
-        // Puedes agregar lógica de validación aquí si es necesario
         productoDAO.insertarProducto(producto);
     }
 
