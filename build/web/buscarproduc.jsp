@@ -3,57 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/css-bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/buscador.css" rel="stylesheet">
     <title>Buscar Producto</title>
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-
-        .container {
-            max-width: 400px;
-            margin: 100px auto;
-        }
-
-        h1 {
-            font-size: 28px;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #007bff;
-        }
-
-        form {
-            padding: 20px;
-            border: 1px solid #ced4da;
-            border-radius: 10px;
-            background-color: #fff;
-        }
-
-        label, input {
-            display: block;
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .volver {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            font-size: 18px;
-            text-decoration: none;
-            color: #007bff;
-        }
-    </style>
 </head>
 <body>
 

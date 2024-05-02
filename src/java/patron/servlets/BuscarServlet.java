@@ -1,4 +1,3 @@
-
 package patron.servlets;
 
 import patron.modelo.Producto;
@@ -10,51 +9,36 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 @WebServlet(name = "BuscarServlet", urlPatterns = {"/BuscarServlet"})
 public class BuscarServlet extends HttpServlet {
 
-    
-    private DataSource dataSource;
-
-    @Override
-    public void init() throws ServletException {
-        super.init();
-        try {
-            Context ctx = new InitialContext();
-            dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/MyDB");
-        } catch (NamingException e) {
-            throw new ServletException("Error al obtener el DataSource", e);
-        }
-    }
+    private String jdbcURL = "jdbc:mysql://localhost:3306/ventas";
+    private String jdbcUsername = "root";
+    private String jdbcPassword = "";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
     }
 
- 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
- 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
         
-         String nombre = request.getParameter("nombre"); // Obtener el nombre a buscar desde el formulario
+        String nombre = request.getParameter("nombre"); // Obtener el nombre a buscar desde el formulario
         
-        try (Connection connection = dataSource.getConnection()) {
+        try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword)) {
             ProductoService productoService = new ProductoService(connection);
             List<Producto> productos = productoService.buscarProductosPorNombre(nombre);
             
@@ -67,13 +51,10 @@ public class BuscarServlet extends HttpServlet {
             // Manejar errores de base de datos
             e.printStackTrace(); // Puedes manejar esto mejor en tu aplicación
         }
-        
     }
 
-  
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
+    }
 }

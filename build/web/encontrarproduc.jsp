@@ -5,48 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/css-bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/encontrar.css" rel="stylesheet">
+    
     <title>Resultados de Búsqueda</title>
-    <style>
-        body {
-            background: #f8f9fa;
-            padding-top: 80px;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #007bff;
-        }
-
-        table {
-            width: 100%;
-            margin-bottom: 1rem;
-            color: #212529;
-        }
-
-        table th, table td {
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .no-productos {
-            text-align: center;
-            font-size: 1.5rem;
-            margin-top: 20px;
-            color: #dc3545;
-        }
-
-        .volver {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            font-size: 1.2rem;
-            text-decoration: none;
-            color: #007bff;
-        }
-    </style>
 </head>
 <body>
 

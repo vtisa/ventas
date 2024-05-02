@@ -9,72 +9,49 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
-@WebServlet(name = "MostrarServlet", urlPatterns = {"/"})
+@WebServlet(name = "MostrarServlet", urlPatterns = {"/MostrarServlet"})
 public class MostrarServlet extends HttpServlet {
 
-    private DataSource dataSource;
+    private String jdbcURL = "jdbc:mysql://localhost:3306/ventas";
+    private String jdbcUsername = "root";
+    private String jdbcPassword = "";
 
-    @Override
-    public void init() throws ServletException {
-        super.init();
-        try {
-            Context ctx = new InitialContext();
-            dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/MyDB");
-        } catch (NamingException e) {
-            throw new ServletException("Error al obtener el DataSource", e);
-        }
-    }
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
     }
 
-  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        try (Connection connection = dataSource.getConnection()) {
+
+        try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword)) {
             ProductoService productoService = new ProductoService(connection);
             List<Producto> productos = productoService.obtenerProductos();
-            
+
             // Puedes almacenar la lista de productos en el alcance de solicitud
             request.setAttribute("productos", productos);
-            
+
             // Redirigir a la página JSP que muestra la lista de productos
             request.getRequestDispatcher("productos.jsp").forward(request, response);
         } catch (SQLException e) {
             // Manejar errores de base de datos
             e.printStackTrace(); // Puedes manejar esto mejor en tu aplicación
         }
-        
+
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
- 
     @Override
     public String getServletInfo() {
         return "Short description";
