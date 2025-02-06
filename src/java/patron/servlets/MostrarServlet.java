@@ -30,18 +30,22 @@ public class MostrarServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
 
-        try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword)) {
-            ProductoService productoService = new ProductoService(connection);
-            List<Producto> productos = productoService.obtenerProductos();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Puedes almacenar la lista de productos en el alcance de solicitud
-            request.setAttribute("productos", productos);
+            try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword)) {
+                ProductoService productoService = new ProductoService(connection);
+                List<Producto> productos = productoService.obtenerProductos();
 
-            // Redirigir a la página JSP que muestra la lista de productos
-            request.getRequestDispatcher("productos.jsp").forward(request, response);
+                request.setAttribute("productos", productos);
+                request.getRequestDispatcher("productos.jsp").forward(request, response);
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            throw new ServletException("Driver JDBC no encontrado", e);
         } catch (SQLException e) {
-            // Manejar errores de base de datos
-            e.printStackTrace(); // Puedes manejar esto mejor en tu aplicación
+            e.printStackTrace();
+            throw new ServletException("Error de conexión con la base de datos", e);
         }
 
     }
